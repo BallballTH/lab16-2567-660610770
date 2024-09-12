@@ -141,8 +141,7 @@ export const DELETE = async (request: NextRequest) => {
     );
   }
 
-  let deleted = DB.students;
-  deleted = deleted.splice(foundIndex,1);
+  DB.students = DB.students.filter((student) => student.studentId !== body.studentId);
 
   return NextResponse.json({
     ok: true,
